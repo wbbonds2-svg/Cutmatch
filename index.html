@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CutMatch</title>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="CutMatch">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#0b0d11">
+<link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAADM0lEQVR4Xu3a3U0bURSF0UvEGz8SVEADuIA0QhOUkyZcQfpwGvB7JB4IBUTOWAMyNmEHFJ87s9ZjBIqxtr4zTjg5u7hqsM8XbwuHGAfGQU45UA5yyoFykFMOlIOccqAc5JQD5SCnHCgHOeVAOcgpB8pBTjlQDnLKgXKQUw6Ug5xyoBzklAPlIKccKAc55UA5yCkHykFOOVAOcsqBcpBTDpSDnHKgHOSUg4NOp/HePD0+VPtBVnc3H3lJX78/fuTbP0Xf43jexP3tp7wd/2b189frb1ws18MffnAlR9TlOIps4m3jJvpdSWfj2M7iqJ1I7ayko5D0NI7NMrqaxY5hFovlupd9dPNppfdljFZ3N+OhKa6DcvR4Sv76ODLso3hCqo9jMsHo8cSUPitTXUYvJ6buOCa/jPFfQco+gtQdB0dXdBwzyUbxeFQcx6yWUXkf5cYxw2WU3Ue5cVBHrXHMNhs141FrHJRiHBxUaBwzvykFL0uhcVCNcVD+rLgpozq/8KEclC8HBSkHykFOOVAOcsqBcpBTDpSDnHKgHOSUA+UgpxwoBznlQDnIKQfKQU45UA5yyoFykFMOlIOccqAc5JQD5SCnHCgHOeVAOcgpB8pBTjlQDnLKgXKQUw6Ug5xyoBzklAPlIKccKAe5KuU4v7xu337kr3+CFsv16u6mwg9WZRwUZBz08MzhsrRW6Ka0phx0UQ6qqfXMMfPLUudzyqDWOCil3DhmG49q2Shajhnuo+Ayio6jtXnto+Yy6o6DCso9c4xmclzKZqN6OSa/j8rLaK2dVsjXG84vr58eHzZfcH9b/KVGFst1a63I/74eUn0c24fT1jYTmco+igdjVPeZY8dkTkwvy+jgrLzU+4np4pS81MFZ2dnH9sQMejg0wybqP2G81tk4BpsT88f2WbXkSvrdxKjLcYz2rOQYFvv+0uKfRN7j5Ozi6j1fxwx182mF/884OMg4MA5yyoFykFMOlIOccqAc5JQD5SCnHCgHOeVAOcgpB8pBTjlQDnLKgXKQUw6Ug5xyoBzklAPlIKccKAc55UA5yCkHykFOOVAOcsqBcpBTDpSDnHKgHOSUg4N+A+Gzv/JepNHPAAAAAElFTkSuQmCC">
+<link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAADM0lEQVR4Xu3a3U0bURSF0UvEGz8SVEADuIA0QhOUkyZcQfpwGvB7JB4IBUTOWAMyNmEHFJ87s9ZjBIqxtr4zTjg5u7hqsM8XbwuHGAfGQU45UA5yyoFykFMOlIOccqAc5JQD5SCnHCgHOeVAOcgpB8pBTjlQDnLKgXKQUw6Ug5xyoBzklAPlIKccKAc55UA5yCkHykFOOVAOcsqBcpBTDpSDnHKgHOSUg4NOp/HePD0+VPtBVnc3H3lJX78/fuTbP0Xf43jexP3tp7wd/2b189frb1ws18MffnAlR9TlOIps4m3jJvpdSWfj2M7iqJ1I7ayko5D0NI7NMrqaxY5hFovlupd9dPNppfdljFZ3N+OhKa6DcvR4Sv76ODLso3hCqo9jMsHo8cSUPitTXUYvJ6buOCa/jPFfQco+gtQdB0dXdBwzyUbxeFQcx6yWUXkf5cYxw2WU3Ue5cVBHrXHMNhs141FrHJRiHBxUaBwzvykFL0uhcVCNcVD+rLgpozq/8KEclC8HBSkHykFOOVAOcsqBcpBTDpSDnHKgHOSUA+UgpxwoBznlQDnIKQfKQU45UA5yyoFykFMOlIOccqAc5JQD5SCnHCgHOeVAOcgpB8pBTjlQDnLKgXKQUw6Ug5xyoBzklAPlIKccKAe5KuU4v7xu337kr3+CFsv16u6mwg9WZRwUZBz08MzhsrRW6Ka0phx0UQ6qqfXMMfPLUudzyqDWOCil3DhmG49q2Shajhnuo+Ayio6jtXnto+Yy6o6DCso9c4xmclzKZqN6OSa/j8rLaK2dVsjXG84vr58eHzZfcH9b/KVGFst1a63I/74eUn0c24fT1jYTmco+igdjVPeZY8dkTkwvy+jgrLzU+4np4pS81MFZ2dnH9sQMejg0wybqP2G81tk4BpsT88f2WbXkSvrdxKjLcYz2rOQYFvv+0uKfRN7j5Ozi6j1fxwx182mF/884OMg4MA5yyoFykFMOlIOccqAc5JQD5SCnHCgHOeVAOcgpB8pBTjlQDnLKgXKQUw6Ug5xyoBzklAPlIKccKAc55UA5yCkHykFOOVAOcsqBcpBTDpSDnHKgHOSUg4N+A+Gzv/JepNHPAAAAAElFTkSuQmCC">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* VOICE: a pro creator tool — calm, confident, precise
+   IDEA: an editing app's inspector panel — clean panels, a timeline strip, one signal colour
+   PICTURE: the match card, with a slim waveform + playhead header
+   COLOUR and TYPE: graphite / paper grounds, signal orange accent, cool blue support; Sora headings + Inter body
+   LAYOUT: phone-width column, sticky header, bottom tab bar with active indicator */
+:root{color-scheme:light dark;
+--bg:light-dark(#f6f7f9,#0b0d11);--panel:light-dark(#ffffff,#13161c);--panel2:light-dark(#eef0f4,#1a1e26);
+--ink:light-dark(#0f1218,#eef1f6);--mute:light-dark(#5f6672,#8b93a1);--line:light-dark(#e2e5eb,#232833);
+--lime:light-dark(#e8551f,#ff6b2c);--limeInk:#ffffff;--coral:light-dark(#2b63d9,#6d9dff);
+--soft:light-dark(#fff1ea,#2a1810);--shadow:light-dark(0 1px 2px rgba(15,18,24,.06),0 1px 2px rgba(0,0,0,.4))}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 Inter,system-ui,sans-serif;overflow-x:clip;-webkit-font-smoothing:antialiased}
+.app{max-width:540px;margin:0 auto;min-height:100vh;padding-top:env(safe-area-inset-top);display:flex;flex-direction:column;padding-bottom:92px}
+h1,h2,.disp{font-family:Sora,Inter,sans-serif;font-weight:600;letter-spacing:-.02em;line-height:1.15;margin:0;text-wrap:balance}
+h1{font-size:30px}h2{font-size:22px}
+.top{position:sticky;top:0;z-index:5;padding:14px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.logo{font:700 19px Sora,sans-serif;letter-spacing:-.02em;display:flex;align-items:center;gap:8px}
+.logo::before{content:"";width:22px;height:22px;border-radius:7px;background:var(--lime);box-shadow:inset -7px 0 0 rgba(0,0,0,.18)}
+.logo b{color:var(--lime);font-weight:700}
+.hi{display:flex;align-items:center;gap:8px;color:var(--mute);font-size:14px}
+.av{width:32px;height:32px;border-radius:50%;background:var(--panel2);color:var(--ink);display:grid;place-items:center;font:600 14px Sora,sans-serif;border:1px solid var(--line)}
+.pad{padding:18px}
+.muted{color:var(--mute)}
+.small{font-size:14px}
+.eyebrow{font-size:13px;font-weight:600;color:var(--lime);margin-bottom:6px}
+label.q{display:block;font-weight:600;font-size:14px;margin:16px 0 8px}
+input[type=text],textarea{width:100%;font:16px Inter,sans-serif;padding:13px 14px;border-radius:12px;border:1px solid var(--line);background:var(--bg);color:var(--ink);transition:border-color .15s}
+textarea{min-height:110px;resize:vertical;line-height:1.5}
+input:focus,textarea:focus{border-color:var(--lime);outline:none;box-shadow:0 0 0 3px color-mix(in srgb,var(--lime) 22%,transparent)}
+button:focus-visible{outline:3px solid color-mix(in srgb,var(--lime) 60%,transparent);outline-offset:2px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{min-height:44px;padding:10px 15px;border-radius:12px;border:1px solid var(--line);background:var(--panel);color:var(--ink);font:500 15px Inter,sans-serif;cursor:pointer;transition:border-color .15s,background .15s}
+.chip:hover:not(:disabled){border-color:var(--mute)}
+.chip:disabled{opacity:.5;cursor:default}
+.chip[aria-pressed=true]{background:var(--soft);color:var(--lime);border-color:var(--lime);font-weight:600}
+.btn{min-height:50px;width:100%;border:0;border-radius:12px;background:var(--lime);color:var(--limeInk);font:600 16px Inter,sans-serif;cursor:pointer;transition:filter .15s}
+.btn:hover:not(:disabled){filter:brightness(1.07)}
+.btn:disabled{opacity:.45;cursor:default}
+.btn.ghost{background:var(--panel);color:var(--ink);border:1px solid var(--line)}
+.row{display:flex;gap:10px}
+.steps{display:flex;gap:6px;margin:20px 0 28px}.steps i{flex:1;height:4px;border-radius:2px;background:var(--line)}.steps i.on{background:var(--lime)}
+.seg{display:grid;grid-template-columns:1fr 1fr;background:var(--panel2);border-radius:12px;padding:4px;gap:4px}
+.seg button{min-height:42px;border:0;border-radius:9px;background:transparent;color:var(--mute);font:600 14px Inter,sans-serif;cursor:pointer}
+.seg button[aria-pressed=true]{background:var(--panel);color:var(--ink);box-shadow:var(--shadow),0 0 0 1px var(--line)}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:18px;margin:14px 0;position:relative;overflow:hidden;box-shadow:var(--shadow)}
+.card h3{margin:0 0 4px;font:600 20px/1.25 Sora,sans-serif;letter-spacing:-.01em}
+.card .sub{color:var(--coral);font-weight:600;font-size:14px;margin-bottom:8px}
+.card p{margin:8px 0;color:var(--ink)}
+.rank{position:absolute;top:16px;right:16px;font-size:12px;font-weight:600;color:var(--mute);background:var(--panel2);padding:3px 9px;border-radius:999px}
+.kv{display:grid;grid-template-columns:minmax(0,1fr);gap:0;font-size:15px;margin-top:12px;border-top:1px solid var(--line)}
+.kv dt{color:var(--mute);font-size:12.5px;font-weight:600;padding-top:12px}.kv dd{margin:2px 0 0;padding-bottom:12px;border-bottom:1px solid var(--line)}
+.kv dd:last-child{border-bottom:0;padding-bottom:0}
+.wave{display:flex;align-items:center;gap:2px;height:28px;margin:0 0 14px;position:relative;padding-right:70px}
+.wave span{flex:1;background:var(--lime);opacity:.35;border-radius:2px}
+.wave span.p{opacity:.9}
+.wave::after{content:"";position:absolute;top:-3px;bottom:-3px;left:var(--ph,30%);width:2px;border-radius:1px;background:var(--ink)}
+.acts{display:flex;gap:8px;margin-top:14px}
+.acts button{flex:1;min-height:44px;border-radius:10px;border:1px solid var(--line);background:var(--panel2);color:var(--ink);font:600 14px Inter,sans-serif;cursor:pointer}
+.acts button.on{border-color:var(--lime);color:var(--lime);background:var(--soft)}
+.hero{border-radius:18px;padding:20px;background:var(--panel);border:1px solid var(--line);box-shadow:var(--shadow)}
+.load{display:flex;align-items:center;gap:12px;padding:20px 4px;color:var(--mute);font-size:15px}
+.load i{width:3px;height:20px;background:var(--lime);border-radius:2px;animation:b 0.9s ease-in-out infinite}
+.load i:nth-child(2){animation-delay:.15s}.load i:nth-child(3){animation-delay:.3s}.load i:nth-child(4){animation-delay:.45s}
+@keyframes b{0%,100%{transform:scaleY(.3)}50%{transform:scaleY(1)}}
+@media(prefers-reduced-motion:reduce){.load i{animation:none}}
+.note{background:var(--panel2);border-radius:12px;padding:12px 14px;font-size:14px;color:var(--mute);margin:14px 0}
+.err{color:#e5484d;padding:12px 4px}
+.or{display:flex;align-items:center;gap:12px;color:var(--mute);font-size:13px;margin:18px 0 12px}
+.or::before,.or::after{content:"";flex:1;height:1px;background:var(--line)}
+nav.tabs{position:fixed;bottom:0;left:0;right:0;z-index:5;background:color-mix(in srgb,var(--panel) 92%,transparent);backdrop-filter:blur(12px);border-top:1px solid var(--line);display:flex;justify-content:center;padding-bottom:env(safe-area-inset-bottom)}
+nav.tabs .in{display:grid;grid-template-columns:repeat(5,1fr);width:100%;max-width:540px}
+nav.tabs button{position:relative;min-height:64px;border:0;background:transparent;color:var(--mute);font:600 11.5px Inter,sans-serif;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px}
+nav.tabs button svg{width:22px;height:22px}
+nav.tabs button[aria-current=true]{color:var(--lime)}
+nav.tabs button[aria-current=true]::before{content:"";position:absolute;top:0;left:30%;right:30%;height:2px;border-radius:0 0 2px 2px;background:var(--lime)}
+.lock{display:flex;gap:14px;align-items:center;padding:14px 0;border-bottom:1px solid var(--line)}
+.lock:last-child{border-bottom:0}
+.lock .n{font:600 15px Sora,sans-serif;color:var(--mute);width:30px;height:30px;border-radius:8px;background:var(--panel2);display:grid;place-items:center;flex:none}
+.pill{display:inline-block;font-size:12px;font-weight:600;padding:3px 10px;border-radius:999px;background:var(--soft);color:var(--lime)}
+.hidden{display:none!important}
+</style>
+</head>
+<body>
+<div class="app" id="app"></div>
+<nav class="tabs hidden" id="tabs"><div class="in">
+  <button data-t="match" aria-current="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>Match</button>
+  <button data-t="ideas"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Ideas</button>
+  <button data-t="tips"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 3-3 3M12 17h.01"/></svg>Help</button>
+  <button data-t="saved"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>Saved</button>
+  <button data-t="course"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="6 4 20 12 6 20 6 4"/></svg>Course</button>
+</div></nav>
+<script>
+{
+const $=s=>document.querySelector(s);
+const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const store={get(k,d){try{const v=localStorage.getItem('cm_'+k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem('cm_'+k,JSON.stringify(v))}catch(e){}}};
+
+const APPS=['CapCut','After Effects','Alight Motion','Premiere Pro','VN','Other'];
+const STYLES=['Velocity','Slowed / emotional','Hype','Cinematic','Smooth / flow','Meme / funny','Shake + flash','Clean / minimal'];
+const NICHES=['NBA','NFL','Soccer','College hoops','UFC / boxing','Anime','Movies / TV','Gaming'];
+const PLATS=['TikTok','Instagram','YouTube Shorts','X'];
+
+let profile=store.get('profile',null);
+let saved=store.get('saved',[]);
+let tab='match', mode='song', step=0;
+let draft=profile?{...profile}:{name:'',app:'',styles:[],niches:[],plats:[]};
+let sample=null, aiReady=false, busy=false, lastResults=null, lastIdea=null, lastTips=null;
+
+let apiKey=store.get('key','');
+aiReady=!!apiKey;
+if(typeof claude!=='undefined'&&claude.use)claude.use('sample').then(s=>{sample=s;aiReady=!!s||!!apiKey;render()}).catch(()=>{});
+
+/* ---------- onboarding ---------- */
+const STEPS=[
+ {k:'name',q:"What's your name?",type:'text',ph:'Lucas'},
+ {k:'app',q:'What do you edit on?',type:'one',opts:APPS},
+ {k:'styles',q:"What's your editing style?",sub:'Pick all that fit.',type:'many',opts:STYLES},
+ {k:'niches',q:'What do you edit?',sub:'Players, shows, whatever you cut.',type:'many',opts:NICHES},
+ {k:'plats',q:'Where do you post?',type:'many',opts:PLATS},
+ {k:'link',q:'Link your accounts',type:'link'}
+];
+function onboard(){
+ const s=STEPS[step];
+ let body='';
+ if(s.type==='text') body=`<input type="text" id="f" value="${esc(draft.name)}" placeholder="${s.ph}" autocomplete="given-name">`;
+ if(s.type==='one'||s.type==='many'){
+  const cur=draft[s.k];
+  body=`<div class="chips">${s.opts.map(o=>{const on=s.type==='one'?cur===o:cur.includes(o);return `<button class="chip" data-o="${esc(o)}" aria-pressed="${on}">${esc(o)}</button>`}).join('')}</div>`;
+ }
+ if(s.type==='link') body=`<div class="row" style="flex-direction:column;gap:10px">
+   <button class="btn ghost" disabled>Connect TikTok, coming soon</button>
+   <button class="btn ghost" disabled>Connect Instagram, coming soon</button></div>
+   <p class="note" style="margin-top:14px">In the real app this pulls your top posts so matches lean toward what already works for you. Skipped in the prototype.</p>`;
+ const ok=s.type==='text'?draft.name.trim():s.type==='one'?draft[s.k]:s.type==='many'?draft[s.k].length:true;
+ $('#app').innerHTML=`<div class="pad" style="padding-top:28px">
+  <div class="logo">Cut<b>Match</b></div>
+  <div class="steps">${STEPS.map((_,i)=>`<i class="${i<=step?'on':''}"></i>`).join('')}</div>
+  <h1>${esc(s.q)}</h1>${s.sub?`<p class="muted">${esc(s.sub)}</p>`:''}
+  <div style="margin:22px 0 28px">${body}</div>
+  <div class="row">${step?'<button class="btn ghost" id="back" style="flex:1">Back</button>':''}
+  <button class="btn" id="next" style="flex:2" ${ok?'':'disabled'}>${step===STEPS.length-1?"Let's go":'Next'}</button></div></div>`;
+ $('#tabs').classList.add('hidden');
+ const f=$('#f'); if(f){f.focus();f.oninput=()=>{draft.name=f.value;$('#next').disabled=!f.value.trim()};f.onkeydown=e=>{if(e.key==='Enter'&&f.value.trim())next()}}
+ document.querySelectorAll('.chip').forEach(b=>b.onclick=()=>{const o=b.dataset.o;
+  if(s.type==='one')draft[s.k]=o;else{const a=draft[s.k];draft[s.k]=a.includes(o)?a.filter(x=>x!==o):[...a,o]}onboard()});
+ $('#next').onclick=next; const bk=$('#back'); if(bk)bk.onclick=()=>{step--;onboard()};
+}
+function next(){if(step<STEPS.length-1){step++;onboard()}else{profile={...draft,name:draft.name.trim()};store.set('profile',profile);render()}}
+
+/* ---------- AI ---------- */
+function ctx(){return `Editor profile: name ${profile.name}; edits on ${profile.app}; styles: ${profile.styles.join(', ')}; edits: ${profile.niches.join(', ')}; posts on ${profile.plats.join(', ')}.`}
+async function ask(prompt){
+ const full=`You are the brain of CutMatch, an app that helps short-form fan editors (sports edits, anime edits, movie edits) come up with ideas. You know edit culture deeply: velocity, slowed+reverb, shakes, flashes, beat syncing, trending TikTok audios, iconic moments.
+${ctx()}
+${prompt}
+Use real, well-known songs and real players/characters only. Be specific: name actual games, seasons, moments and the exact part of the song (e.g. "the drop at 0:42" or "second verse"). Keep each text field under 40 words. Reply with JSON only, no prose.`;
+ const parse=t=>{t=t.replace(/^```(json)?|```$/gm,'');return JSON.parse(t.slice(t.indexOf('{'),t.lastIndexOf('}')+1))};
+ if(sample){
+  try{return await sample.json(full,{modelTier:'default'})}
+  catch(e){ if(e&&e.code)throw e; const r=await sample(full,{modelTier:'default'}); return parse(r.text) }
+ }
+ if(!apiKey)throw {code:'no_key'};
+ const res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'content-type':'application/json','x-api-key':apiKey,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},
+  body:JSON.stringify({model:'claude-sonnet-5-5',max_tokens:2000,messages:[{role:'user',content:full}]})});
+ if(res.status===401)throw {code:'bad_key'};
+ if(res.status===429)throw {code:'rate_limited'};
+ if(!res.ok)throw {code:'http'};
+ const j=await res.json();
+ return parse((j.content||[]).map(c=>c.text||'').join(''));
+}
+function errMsg(e){if(e&&e.code==='no_key')return 'Add your API key in Saved → Settings first.';if(e&&e.code==='bad_key')return 'That API key didn\'t work. Check it in Saved → Settings.';if(e&&e.code==='not_granted')return 'AI access was declined. Reload and allow it to use matching.';if(e&&e.code==='rate_limited')return 'Too many requests right now. Wait a minute and try again.';return 'Something went wrong. Try again.'}
+
+/* ---------- views ---------- */
+function wave(seed,ph){let x=seed*9301+49297,out='';const n=40;for(let i=0;i<n;i++){x=(x*9301+49297)%233280;const h=20+Math.abs(Math.sin(i*.5+seed))*50+(x/233280)*30;out+=`<span class="${i/n*100<ph*1.27?'p':''}" style="height:${h.toFixed(0)}%"></span>`}return out}
+function resultCard(r,i,kind){
+ const id=kind+':'+(r.title||'')+':'+(r.pair||'');
+ const isSaved=saved.some(s=>s.id===id);
+ return `<div class="card">
+  <span class="rank">Pick ${i+1}</span>
+  <div class="wave" style="--ph:${20+i*22}%">${wave(i+(r.title||'').length,20+i*22)}</div>
+  <h3>${esc(r.title)}</h3><div class="sub">${esc(r.subtitle)}</div>
+  <p>${esc(r.why)}</p>
+  <dl class="kv">
+   ${r.moments?`<dt>Clips to pull</dt><dd>${esc(r.moments)}</dd>`:''}
+   ${r.songPart?`<dt>Song part</dt><dd>${esc(r.songPart)}</dd>`:''}
+   ${r.style?`<dt>Edit style</dt><dd>${esc(r.style)}</dd>`:''}
+   ${r.tip?`<dt>Pro move</dt><dd>${esc(r.tip)}</dd>`:''}
+  </dl>
+  <div class="acts"><button data-save="${i}" class="${isSaved?'on':''}">${isSaved?'Saved':'Save idea'}</button><button data-copy="${i}">Copy</button></div></div>`;
+}
+function bindCards(list,kind){
+ document.querySelectorAll('[data-save]').forEach(b=>b.onclick=()=>{const r=list[+b.dataset.save];const id=kind+':'+(r.title||'')+':'+(r.pair||'');
+  if(saved.some(s=>s.id===id))saved=saved.filter(s=>s.id!==id);else saved.unshift({...r,id,kind,at:Date.now()});store.set('saved',saved);render()});
+ document.querySelectorAll('[data-copy]').forEach(b=>b.onclick=async()=>{const r=list[+b.dataset.copy];
+  const t=[r.title,r.subtitle,r.why,r.moments&&'Clips: '+r.moments,r.songPart&&'Song part: '+r.songPart,r.style&&'Style: '+r.style,r.tip&&'Pro move: '+r.tip].filter(Boolean).join('\n');
+  try{await navigator.clipboard.writeText(t);b.textContent='Copied'}catch(e){b.textContent='Copy failed'}});
+}
+function noAI(){return aiReady?'':`<p class="note">To turn on the AI, add your Claude API key in Saved → Settings.</p>`}
+
+function viewMatch(){
+ const input=store.get('in_'+mode,'');
+ return `<div class="pad">
+  <div class="hero">
+   <div class="eyebrow">Matcher</div>
+   <h2>${mode==='song'?'Got a song? Find the player.':'Got a player? Find the song.'}</h2>
+   <p class="muted small" style="margin:6px 0 14px">${mode==='song'?'Drop a song and the vibe you want. You get players, moments and how to cut it.':'Drop a player or character. You get songs that fit, plus the edit style.'}</p>
+   <div class="seg" role="group"><button data-m="song" aria-pressed="${mode==='song'}">Song → Player</button><button data-m="player" aria-pressed="${mode==='player'}">Player → Song</button></div>
+   <label class="q" for="mi">${mode==='song'?'Song + artist':'Player or character'}</label>
+   <input type="text" id="mi" value="${esc(input)}" placeholder="${mode==='song'?'Back to Back, Drake':'Kyrie Irving'}">
+   <label class="q" for="mv">Vibe <span class="muted small">(optional)</span></label>
+   <input type="text" id="mv" value="${esc(store.get('vibe_'+mode,''))}" placeholder="${mode==='song'?'comeback arc, cold, revenge':'sad, hype, villain era'}">
+   <div style="margin-top:16px"><button class="btn" id="go" ${!aiReady||busy?'disabled':''}>${busy?'Matching…':'Match it'}</button></div>
+  </div>
+  ${noAI()}
+  <div id="res">${busy?'<div class="load"><i></i><i></i><i></i><i></i> Scrubbing the timeline…</div>':''}
+  ${!busy&&lastResults&&lastResults.mode===mode?lastResults.html:''}</div>
+  </div>`;
+}
+async function runMatch(){
+ const v=$('#mi').value.trim(), vibe=$('#mv').value.trim(); if(!v||busy)return;
+ store.set('in_'+mode,v);store.set('vibe_'+mode,vibe);busy=true;render();
+ const p=mode==='song'
+  ?`Task: the editor has the song "${v}"${vibe?` and wants this vibe: ${vibe}`:''}. Suggest 3 players or characters (from their niches first) whose story fits this song. JSON: {"picks":[{"title":"player name","subtitle":"the angle, e.g. 2016 Finals redemption","pair":"${v}","why":"why the song fits them","moments":"specific clips to pull","songPart":"which part of the song to use","style":"edit style + transitions","tip":"one pro move for ${profile.app}"}]}`
+  :`Task: the editor wants to edit "${v}"${vibe?` with this vibe: ${vibe}`:''}. Suggest 3 songs that fit (mix of current trending edit audios and proven classics). JSON: {"picks":[{"title":"song title — artist","subtitle":"the angle for this player","pair":"${v}","why":"why it fits the player","moments":"specific clips of ${v} to pull","songPart":"which part of the song to use","style":"edit style + transitions","tip":"one pro move for ${profile.app}"}]}`;
+ try{const j=await ask(p);const list=(j.picks||[]).slice(0,3);
+  lastResults={mode,list,html:list.length?list.map((r,i)=>resultCard(r,i,'match')).join(''):'<p class="err">No matches came back. Try again.</p>'};
+ }catch(e){lastResults={mode,list:[],html:`<p class="err">${esc(errMsg(e))}</p>`}}
+ busy=false;render();
+}
+
+function viewIdeas(){
+ return `<div class="pad"><div class="hero"><div class="eyebrow">Idea generator</div><h2>Stuck? Get a full edit idea.</h2>
+  <p class="muted small" style="margin:6px 0 14px">One tap gives you a player, a song and a concept that fit your style.</p>
+  <label class="q" for="ii">Anything to steer it? <span class="muted small">(optional)</span></label>
+  <input type="text" id="ii" placeholder="playoff season, underrated players, 2000s nostalgia">
+  <div style="margin-top:16px"><button class="btn" id="gi" ${!aiReady||busy?'disabled':''}>${busy?'Thinking…':'Give me an idea'}</button></div></div>
+  ${noAI()}
+  ${busy?'<div class="load"><i></i><i></i><i></i><i></i> Cooking something up…</div>':''}
+  ${!busy&&lastIdea?lastIdea.html:''}</div>`;
+}
+async function runIdea(){
+ if(busy)return;const steer=$('#ii').value.trim();busy=true;render();
+ const p=`Task: give 2 fresh, specific edit concepts that fit this editor's styles and niches${steer?`, steered toward: ${steer}`:''}. Avoid the most overdone ideas. JSON: {"picks":[{"title":"concept name","subtitle":"player — song — artist","pair":"idea","why":"the concept and hook in the first 2 seconds","moments":"clips to pull","songPart":"part of the song","style":"edit style + transitions","tip":"one pro move for ${profile.app}"}]}`;
+ try{const j=await ask(p);const list=(j.picks||[]).slice(0,2);lastIdea={list,html:list.map((r,i)=>resultCard(r,i,'idea')).join('')}}
+ catch(e){lastIdea={list:[],html:`<p class="err">${esc(errMsg(e))}</p>`}}
+ busy=false;render();
+}
+
+function viewTips(){
+ const topics=['Beat syncing','Velocity','Shakes & flashes','Color grading','Hooks that hold','Text & captions','Smooth transitions','Getting on the FYP'];
+ return `<div class="pad"><div class="hero"><div class="eyebrow">Help · ${esc(profile.app)}</div><h2>What are you stuck on?</h2>
+  <p class="muted small" style="margin:6px 0 4px">Describe the problem in your own words. You get a fix built around ${esc(profile.app)} and your style.</p>
+  <label class="q" for="tq">Your problem</label>
+  <textarea id="tq" placeholder="My velocity looks choppy on the slow parts and the clip jumps right before the drop">${esc(store.get('tq',''))}</textarea>
+  <div style="margin-top:12px"><button class="btn" id="ta" ${!aiReady||busy?'disabled':''}>${busy?'Working on it…':'Get help'}</button></div>
+  <div class="or">or pick a topic</div>
+  <div class="chips">${topics.map(t=>`<button class="chip" data-tp="${esc(t)}" ${!aiReady||busy?'disabled':''}>${esc(t)}</button>`).join('')}</div></div>
+  ${noAI()}
+  ${busy?'<div class="load"><i></i><i></i><i></i><i></i> Figuring out the fix…</div>':''}
+  ${!busy&&lastTips?lastTips:''}</div>`;
+}
+async function runTips(t,custom){
+ if(busy||!t)return;busy=true;render();
+ const p=custom
+  ?`Task: the editor describes this problem in their own words: "${t}". Figure out what is most likely causing it and how to fix it in ${profile.app}, using the real menu and tool names. If the problem is vague, cover the most likely cause first. JSON: {"title":"short name for the problem","cause":"what is most likely causing it","steps":["4-6 short, concrete steps to fix it"],"mistake":"a related mistake to avoid","next":"one thing to try if that doesn't fix it"}`
+  :`Task: give practical tips on "${t}" for someone editing on ${profile.app}. Use the real menu or tool names in ${profile.app}. JSON: {"title":"${t}","steps":["5 short, concrete steps"],"mistake":"the most common mistake"}`;
+ try{const j=await ask(p);lastTips=`<div class="card">${custom?`<div class="eyebrow">You asked</div><p class="muted small" style="margin:0 0 12px">${esc(t)}</p>`:''}<h3>${esc(j.title||t)}</h3><div class="sub">${esc(profile.app)}</div>
+  ${j.cause?`<p><b>Likely cause:</b> ${esc(j.cause)}</p>`:''}
+  <ol style="padding-left:20px;margin:10px 0">${(j.steps||[]).map(s=>`<li style="margin:7px 0">${esc(s)}</li>`).join('')}</ol>
+  ${j.mistake?`<p class="note"><b>Avoid:</b> ${esc(j.mistake)}</p>`:''}
+  ${j.next?`<p class="small"><b>Still not fixed?</b> ${esc(j.next)}</p>`:''}</div>`}
+ catch(e){lastTips=`<p class="err">${esc(errMsg(e))}</p>`}
+ busy=false;render();
+}
+
+function viewSaved(){
+ return `<div class="pad"><h2>Saved ideas</h2>
+  ${saved.length?saved.map((r,i)=>resultCard(r,i,r.kind)).join(''):'<p class="muted" style="margin-top:12px">Nothing saved yet. Hit "Save idea" on any match and it lands here.</p>'}
+  <div class="card" style="margin-top:28px"><h3>Settings</h3>
+   <label class="q" for="ak">Claude API key</label>
+   <input type="text" id="ak" value="${esc(apiKey)}" placeholder="sk-ant-..." autocomplete="off" autocapitalize="off" spellcheck="false">
+   <p class="muted small" style="margin:8px 0 12px">Saved only on this phone. Get a key at console.anthropic.com. Personal testing only, don't share this page with your key in it.</p>
+   <button class="btn" id="aks">Save key</button></div>
+  <div style="margin-top:14px"><button class="btn ghost" id="reset">Redo onboarding</button></div></div>`;
+}
+
+function viewCourse(){
+ const lessons=[['The 3-second hook','Why most edits lose people before the first beat'],['Beat mapping','Marking every hit before you touch a clip'],['Velocity done right','Curves that feel smooth, not choppy'],['Clip hunting','Where to find clean, high-quality footage fast'],['Color & grade','One look that makes every edit yours'],['Growing an edit page','Posting rhythm, audio picks, what the algorithm wants']];
+ return `<div class="pad"><span class="pill">Pro</span>
+  <h2 style="margin-top:10px">The editing course</h2>
+  <p class="muted">Video lessons from the founder. Part of the Pro subscription.</p>
+  <div class="card">${lessons.map((l,i)=>`<div class="lock"><span class="n">${i+1}</span><div><b>${esc(l[0])}</b><div class="muted small">${esc(l[1])}</div></div></div>`).join('')}</div>
+  <button class="btn" disabled>Unlock Pro, coming soon</button>
+  <p class="muted small" style="text-align:center">Placeholder lessons for the prototype.</p></div>`;
+}
+
+function render(){
+ if(!profile){onboard();return}
+ $('#tabs').classList.remove('hidden');
+ document.querySelectorAll('nav.tabs button').forEach(b=>b.setAttribute('aria-current',b.dataset.t===tab));
+ const views={match:viewMatch,ideas:viewIdeas,tips:viewTips,saved:viewSaved,course:viewCourse};
+ $('#app').innerHTML=`<div class="top"><div class="logo">Cut<b>Match</b></div><div class="hi">Hey ${esc(profile.name)}<span class="av">${esc(profile.name.charAt(0).toUpperCase())}</span></div></div>`+views[tab]();
+ if(tab==='match'){
+  document.querySelectorAll('[data-m]').forEach(b=>b.onclick=()=>{mode=b.dataset.m;render()});
+  const go=$('#go');if(go)go.onclick=runMatch;const mi=$('#mi');if(mi)mi.onkeydown=e=>{if(e.key==='Enter')runMatch()};
+  if(lastResults&&lastResults.mode===mode&&!busy)bindCards(lastResults.list,'match');
+ }
+ if(tab==='ideas'){const g=$('#gi');if(g)g.onclick=runIdea;if(lastIdea&&!busy)bindCards(lastIdea.list,'idea')}
+ if(tab==='tips'){document.querySelectorAll('[data-tp]').forEach(b=>b.onclick=()=>runTips(b.dataset.tp,false));
+  const tq=$('#tq');tq.oninput=()=>store.set('tq',tq.value);$('#ta').onclick=()=>runTips(tq.value.trim(),true)}
+ if(tab==='saved'){bindCards(saved,'saved');
+  document.querySelectorAll('[data-save]').forEach(b=>b.onclick=()=>{saved.splice(+b.dataset.save,1);store.set('saved',saved);render()});
+  $('#reset').onclick=()=>{draft={...profile};profile=null;step=0;render()};
+  $('#aks').onclick=()=>{apiKey=$('#ak').value.trim();store.set('key',apiKey);aiReady=!!sample||!!apiKey;$('#aks').textContent=apiKey?'Saved':'Key removed'}}
+}
+document.querySelectorAll('nav.tabs button').forEach(b=>b.onclick=()=>{if(busy)return;tab=b.dataset.t;render();window.scrollTo(0,0)});
+render();
+}
+</script>
+</body>
+</html>
