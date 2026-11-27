@@ -271,6 +271,7 @@ main{padding-bottom:calc(96px + var(--safeB))}
 .ob h1{margin-bottom:8px}
 .ob .grow{flex:1}
 .ob .opts{display:grid;gap:10px;margin-top:22px}
+.ob .opts.two{grid-template-columns:1fr 1fr}.ob .opts.two .opt{padding:12px}.ob .opts.two .em{width:32px;height:32px;font-size:13px}
 .opt{display:flex;align-items:center;gap:14px;padding:16px;border-radius:16px;border:2px solid var(--line);background:var(--panel);text-align:left;width:100%;font-weight:600}
 .opt[aria-pressed="true"]{border-color:var(--acc);background:var(--accSoft)}
 .opt .em{width:40px;height:40px;border-radius:12px;background:var(--panel2);display:grid;place-items:center;font:700 15px Sora;color:var(--acc);flex:none}
@@ -399,6 +400,38 @@ const SUBJECTS=[
  {n:'Khabib Nurmagomedov',mo:'29–0 and walking away',l:'sports',sp:'Fighting',m:['dark','triumphant','sad'],c:'Takedowns, the final win, the glove on the canvas'},
  {n:'Mike Tyson',mo:'Prime knockouts, late 1980s',l:'sports',sp:'Fighting',m:['aggressive','dark','nostalgic'],c:'Peekaboo slips, one-punch KOs, the stare-down'},
  {n:'Muhammad Ali',mo:'Rumble in the Jungle, 1974',l:'sports',sp:'Fighting',m:['triumphant','nostalgic'],c:'Rope-a-dope, the knockout, the famous quotes'},
+ // NHL
+ {n:'Wayne Gretzky',mo:'The Great One: 92 goals in 1981–82',l:'sports',sp:'NHL',m:['nostalgic','triumphant'],c:'Behind-the-net passes, the 50-in-39, Stanley Cup lifts'},
+ {n:'Sidney Crosby',mo:'The Golden Goal, 2010 Olympics',l:'sports',sp:'NHL',m:['triumphant','hype'],c:'The Golden Goal, the glove toss, Cup celebrations'},
+ {n:'Alex Ovechkin',mo:'One-timers from the Ovi spot',l:'sports',sp:'NHL',m:['aggressive','hype'],c:'Ovi-spot one-timers, big hits, goal celebrations'},
+ {n:'Connor McDavid',mo:'End-to-end rushes at full speed',l:'sports',sp:'NHL',m:['smooth','hype'],c:'Coast-to-coast goals, defenders left behind, toe drags'},
+ {n:'Mario Lemieux',mo:'Five goals five different ways, 1988',l:'sports',sp:'NHL',m:['nostalgic','triumphant'],c:'Dangles, the five-goal game, his comeback'},
+ // MLB
+ {n:'Shohei Ohtani',mo:'Two-way seasons and the 2024 50/50',l:'sports',sp:'MLB',m:['hype','triumphant'],c:'Moonshot homers, strikeouts, the 50/50 night'},
+ {n:'Aaron Judge',mo:'62 home runs, 2022',l:'sports',sp:'MLB',m:['aggressive','triumphant'],c:'No. 62, bat flips, robbed homers at the wall'},
+ {n:'Derek Jeter',mo:'The Flip (2001) and the final-game walk-off (2014)',l:'sports',sp:'MLB',m:['nostalgic','sad','triumphant'],c:'Jump throws, The Flip, the last walk-off'},
+ {n:'Ken Griffey Jr.',mo:'The sweetest swing in baseball',l:'sports',sp:'MLB',m:['smooth','nostalgic'],c:'Backwards cap, that swing, wall-climbing catches'},
+ {n:'David Ortiz',mo:'The 2004 ALCS comeback',l:'sports',sp:'MLB',m:['triumphant','hype'],c:'Walk-offs, the curse breaking, Big Papi celebrations'},
+ // Tennis
+ {n:'Novak Djokovic',mo:'24 Grand Slams, the villain era',l:'sports',sp:'Tennis',m:['dark','triumphant'],c:'Splits on hard court, shirt rips, trophy bites'},
+ {n:'Rafael Nadal',mo:'14 French Opens and the 2024 farewell',l:'sports',sp:'Tennis',m:['triumphant','sad','nostalgic'],c:'Clay slides, the forehand, the goodbye ceremony'},
+ {n:'Roger Federer',mo:'The 2022 farewell next to Nadal',l:'sports',sp:'Tennis',m:['sad','nostalgic','smooth'],c:'One-handed backhands, Wimbledon whites, the tears'},
+ {n:'Serena Williams',mo:'23 Grand Slams',l:'sports',sp:'Tennis',m:['triumphant','aggressive'],c:'Big serves, the roar, trophy moments'},
+ {n:'Carlos Alcaraz',mo:'Highlight-reel shots and Grand Slam wins',l:'sports',sp:'Tennis',m:['hype','smooth'],c:'Drop shots, tweeners, sprinting gets'},
+ // College
+ {n:'Caitlin Clark',mo:'Logo threes at Iowa',l:'sports',sp:'College',m:['hype','smooth'],c:'Logo threes, the record night, crowd reactions'},
+ {n:'Reggie Bush',mo:'USC highlight runs, 2005',l:'sports',sp:'College',m:['nostalgic','smooth'],c:'Cutback runs, stiff-arms, punt returns'},
+ {n:'Travis Hunter',mo:'Two-way star at Colorado',l:'sports',sp:'College',m:['hype','smooth'],c:'Interceptions, deep catches, both sides of the ball'},
+ {n:'Kemba Walker',mo:'UConn\'s 2011 Big East and title run',l:'sports',sp:'College',m:['triumphant','nostalgic'],c:'The step-back over Gary Johnson, the title'},
+ // F1
+ {n:'Lewis Hamilton',mo:'Seven world titles',l:'sports',sp:'F1',m:['triumphant','smooth'],c:'Overtakes, onboard laps, trophy celebrations'},
+ {n:'Max Verstappen',mo:'The 2021 Abu Dhabi last lap',l:'sports',sp:'F1',m:['aggressive','dark','hype'],c:'Final-lap overtake, onboard radio, title celebration'},
+ {n:'Ayrton Senna',mo:'Monaco qualifying, 1988',l:'sports',sp:'F1',m:['nostalgic','sad'],c:'The Monaco lap, rain driving, archive interviews'},
+ // WNBA
+ {n:"A'ja Wilson",mo:'MVP seasons with the Aces',l:'sports',sp:'WNBA',m:['triumphant','aggressive'],c:'Post moves, blocks, championship celebrations'},
+ {n:'Sabrina Ionescu',mo:'The record 37-point 3-point contest, 2023',l:'sports',sp:'WNBA',m:['hype','smooth'],c:'Rack after rack, deep threes, the crowd losing it'},
+ {n:'Diana Taurasi',mo:'The GOAT\'s clutch shots and titles',l:'sports',sp:'WNBA',m:['triumphant','nostalgic'],c:'Step-back threes, trash talk, trophy moments'},
+ {n:'Angel Reese',mo:'Double-doubles and the rivalry',l:'sports',sp:'WNBA',m:['aggressive','hype'],c:'Boards, putbacks, celebrations'},
  // Anime
  {n:'Gojo Satoru',mo:'Jujutsu Kaisen: Hollow Purple and the Sukuna fight',l:'anime',m:['dark','hype','smooth'],c:'Blindfold off, Infinity, Domain Expansion'},
  {n:'Itachi Uchiha',mo:'Naruto: the truth behind the massacre',l:'anime',m:['sad','dark'],c:'Sharingan close-ups, the forehead poke, the rain'},
@@ -410,6 +443,13 @@ const SUBJECTS=[
  {n:'Denji',mo:'Chainsaw Man: transformations and chaos',l:'anime',m:['aggressive','hype'],c:'Pull-cord transformation, chainsaw swings, the grin'},
  {n:'Tanjiro Kamado',mo:'Demon Slayer: Hinokami Kagura vs Rui',l:'anime',m:['triumphant','sad'],c:'Fire breathing, the flashback, the slow-mo strike'},
  {n:'Eren Yeager',mo:'Attack on Titan: the Rumbling',l:'anime',m:['dark','sad'],c:'The transformation, wall titans, the final look'},
+ {n:'Naruto Uzumaki',mo:'Naruto vs Pain',l:'anime',m:['triumphant','sad','hype'],c:'Sage Mode arrival, the Rasenshuriken, the village cheering'},
+ {n:'Yuji Itadori',mo:'Jujutsu Kaisen: Black Flash',l:'anime',m:['aggressive','hype'],c:'Black Flash impacts, the fight with Todo, Sukuna takeovers'},
+ {n:'Vegeta',mo:'Dragon Ball Z: the final explosion',l:'anime',m:['sad','triumphant'],c:'The goodbye to Trunks, the explosion, his pride'},
+ {n:'Roronoa Zoro',mo:'One Piece: "Nothing happened"',l:'anime',m:['dark','triumphant'],c:'Three-sword style, the "nothing happened" scene, King of Hell'},
+ {n:'Ichigo Kurosaki',mo:'Bleach: Thousand-Year Blood War',l:'anime',m:['dark','hype'],c:'Bankai, Hollow mask, the final Getsuga'},
+ {n:'Saitama',mo:'One Punch Man: Serious Punch',l:'anime',m:['hype','chill'],c:'One punch, the bored face, the cape'},
+ {n:'Killua Zoldyck',mo:'Hunter x Hunter: Godspeed',l:'anime',m:['smooth','dark'],c:'Lightning speed, assassin mode, the friendship with Gon'},
  {n:'Violet Evergarden',mo:'Learning what "I love you" means',l:'anime',m:['sad','chill','nostalgic'],c:'Letters, the typewriter, the reunion moments'},
  // Movies & TV
  {n:'John Wick',mo:'The nightclub and Osaka fights',l:'movies',m:['aggressive','dark','smooth'],c:'Gun-fu takedowns, reloads, the suit walk'},
@@ -422,6 +462,15 @@ const SUBJECTS=[
  {n:'Miles Morales',mo:'Into the Spider-Verse: the leap of faith',l:'movies',m:['triumphant','hype','smooth'],c:'The leap, the rise, the suit spray-paint'},
  {n:'Rocky Balboa',mo:'The steps training montage',l:'movies',m:['triumphant','nostalgic'],c:'Morning runs, raw eggs, the steps celebration'},
  {n:'Patrick Bateman',mo:'American Psycho: the morning routine',l:'movies',m:['dark','smooth'],c:'The routine, the business-card scene, the stare'},
+ {n:'Stranger Things',mo:'Max running up that hill, Eddie\'s guitar solo',l:'movies',m:['sad','nostalgic','triumphant'],c:'Max floating, the walkman, the Upside Down solo'},
+ {n:'The Batman (2022)',mo:'The Batmobile chase',l:'movies',m:['dark','aggressive'],c:'Rain fights, the Batmobile, the hallway fight'},
+ {n:'Dune',mo:'Paul rides the sandworm',l:'movies',m:['triumphant','dark'],c:'The worm ride, the Gom Jabbar, desert wides'},
+ {n:'Avengers: Endgame',mo:'"Avengers, assemble"',l:'movies',m:['triumphant','hype'],c:'The portals, Cap with Mjolnir, the snap'},
+ {n:'Gladiator',mo:'"Are you not entertained?"',l:'movies',m:['triumphant','dark'],c:'The arena, the reveal, wheat-field hand'},
+ {n:'Fast & Furious',mo:'Dom and Brian\'s last ride',l:'movies',m:['sad','nostalgic'],c:'The final drive, the fork in the road, family moments'},
+ {n:'Homelander',mo:'The Boys: the scariest smile on TV',l:'movies',m:['dark'],c:'The smile, laser eyes, the crowd speeches'},
+ {n:'Jinx',mo:'Arcane: the chaos and the sisters',l:'movies',m:['dark','sad','aggressive'],c:'Fishbones, the flares, the sister moments'},
+ {n:'Squid Game',mo:'Red Light, Green Light',l:'movies',m:['dark','aggressive'],c:'The doll, the tracksuits, the final game'},
  {n:'Up',mo:'The "Married Life" montage',l:'movies',m:['sad','nostalgic'],c:'The adventure book, the house, the empty chair'},
 ];
 const MOODLINE={hype:'every big moment hits harder on the beat',aggressive:'hard hits line up with the heaviest drums',dark:'the shadowy tone sells a villain-arc story',sad:'it plays as an emotional story, not just highlights',chill:'it lets smooth clips breathe',smooth:'fluid motion rides the melody',triumphant:'it builds to a peak that matches a winning moment',nostalgic:'old footage turns into a throwback story'};
@@ -430,6 +479,11 @@ const FX={hype:['velocity','shake','beatsync'],aggressive:['shake','flash','beat
 const FXNAME={velocity:'Velocity',shake:'Shake',beatsync:'Beat sync',flash:'Flash',color:'Color grade',zoom:'Slow zoom',slowmo:'Slow-mo',fade:'Fade',transition:'Transition',blur:'Motion blur',grain:'Film grain',text:'Text hit'};
 const GENRE_MOODS=[[/hip|rap|trap|drill/i,['hype','aggressive']],[/r&b|soul/i,['smooth','chill']],[/phonk|electro|dance|house|edm/i,['hype','dark']],[/alt|indie/i,['nostalgic','chill']],[/rock|metal/i,['aggressive','triumphant']],[/soundtrack|score|classical|cinematic/i,['triumphant','sad']],[/country|folk|singer/i,['nostalgic','sad']],[/pop/i,['hype','smooth']]];
 
+const CATS=[['allsports','All sports'],['NBA','NBA'],['NFL','NFL'],['Soccer','Soccer'],['NHL','NHL'],['MLB','MLB'],['Tennis','Tennis'],['Fighting','UFC / Boxing'],['College','College'],['F1','F1'],['WNBA','WNBA'],['movies','Movies / TV'],['anime','Anime'],['surprise','Surprise me']];
+const SPORTS=['NBA','NFL','Soccer','NHL','MLB','Tennis','Fighting','College','F1','WNBA'];
+const catLabel=k=>(CATS.find(c=>c[0]===k)||[k,k])[1];
+const LEGACY={'Anime':'anime','Movies & TV':'movies'};
+const inCat=(x,c)=>c==='surprise'||(c==='allsports'&&x.l==='sports')||x.sp===c||x.l===c;
 const APPS=['CapCut','After Effects','Alight Motion','Premiere Pro','VN','Other'];
 const STEPS={
  'CapCut':{
@@ -513,7 +567,7 @@ let S={
  profile:store.get('profile',null), pro:store.get('pro',false), saved:store.get('saved',[]),
  usage:store.get('usage',{day:'',n:0,week:'',bp:0}), tipsDone:store.get('tipsDone',[]), lessonsDone:store.get('lessonsDone',[]),
  key:store.get('key',''), theme:store.get('theme','auto'),
- tab:'match', song:null, moods:[], tempo:'mid', lane:'sports', sport:'Any', results:null, shown:[], view:null, q:''
+ tab:'match', song:null, moods:[], tempo:'mid', lane:'allsports', results:null, shown:[], view:null, q:''
 };
 const LIMIT=3, SAVE_LIMIT=10;
 function usage(){const u=S.usage;if(u.day!==today()){u.day=today();u.n=0}if(u.week!==weekKey()){u.week=weekKey();u.bp=0}return u}
@@ -541,37 +595,68 @@ function artHTML(song,cls=''){
  return `<div class="art ${cls}" style="background:linear-gradient(135deg,hsl(${h} 80% 55%),hsl(${(h+40)%360} 75% 35%))"><span class="ph">${esc(((song&&song.t)||'?')[0])}</span></div>`;
 }
 const player=$('#player');let playing=null;
-function togglePlay(url,id,btn){
- if(!url){toast('No preview for this song');return}
+function togglePlay(url,id,btn,song){
+ if(!url){
+  if(song&&!song._tried){song._tried=1;if(btn)btn.innerHTML='<span class="spin" style="width:14px;height:14px;border-top-color:#fff"></span>';
+   hydrateArt(song).then(()=>{updPlay();if(song.preview){player.src=song.preview;player.play().then(()=>{playing=id;updPlay()}).catch(()=>toast('Got it. Tap play again.'))}else listenElsewhere(song)});return}
+  listenElsewhere(song);return}
  if(playing===id){player.pause();playing=null;updPlay();return}
  player.src=url;player.play().then(()=>{playing=id;updPlay()}).catch(()=>toast('Preview could not play'));
 }
 player.onended=()=>{playing=null;updPlay()};
+player.onerror=()=>{if(playing){playing=null;updPlay();toast('Preview could not load')}};
+function listenElsewhere(song){
+ const q=encodeURIComponent(song?(song.t+' '+song.a).replace('Unknown artist',''):'');
+ openSheet(`<h2>No preview available</h2><p class="muted">Listen to the full song instead:</p>
+ <div style="display:grid;gap:10px;margin-top:16px"><a class="btn" href="https://open.spotify.com/search/${q}" target="_blank" rel="noopener">Open in Spotify</a>
+ <a class="btn ghost" href="https://music.apple.com/us/search?term=${q}" target="_blank" rel="noopener">Open in Apple Music</a>
+ <a class="btn ghost" href="https://www.youtube.com/results?search_query=${q}" target="_blank" rel="noopener">Open in YouTube</a></div>`);
+}
 function updPlay(){$$('[data-play]').forEach(b=>b.innerHTML=b.dataset.play===playing?I.pause:I.play)}
 
-/* ================= song search (Apple iTunes Search API via JSONP) ================= */
+/* ================= song search: Apple iTunes + Deezer, searched together ================= */
 let jsonpN=0;
-function itunes(term,limit=8){
- return new Promise((res,rej)=>{
-  const cb='__cm'+(++jsonpN);const s=document.createElement('script');let done=false;
-  const end=()=>{done=true;delete window[cb];s.remove()};
-  window[cb]=d=>{end();res((d.results||[]).filter(r=>r.kind==='song'||r.trackName).map(r=>({id:'it'+r.trackId,t:r.trackName,a:r.artistName,art:(r.artworkUrl100||'').replace('100x100bb','300x300bb'),preview:r.previewUrl,genre:r.primaryGenreName})))};
-  s.onerror=()=>{if(!done){end();rej(new Error('net'))}};
-  setTimeout(()=>{if(!done){end();rej(new Error('timeout'))}},7000);
-  s.src='https://itunes.apple.com/search?media=music&entity=song&limit='+limit+'&term='+encodeURIComponent(term)+'&callback='+cb;
-  document.head.appendChild(s);
- });
+function jsonp(url,ms=7000){return new Promise((res,rej)=>{const cb='__cm'+(++jsonpN);const sc=document.createElement('script');let done=false;
+ const end=()=>{done=true;delete window[cb];sc.remove()};window[cb]=d=>{end();res(d)};sc.onerror=()=>{if(!done){end();rej(new Error('net'))}};
+ setTimeout(()=>{if(!done){end();rej(new Error('timeout'))}},ms);sc.src=url+(url.includes('?')?'&':'?')+'callback='+cb;document.head.appendChild(sc)})}
+async function getJSON(url,jsonpUrl){
+ if(location.protocol==='file:')return jsonp(jsonpUrl||url);
+ try{const ctl=new AbortController();const t=setTimeout(()=>ctl.abort(),7000);const r=await fetch(url,{signal:ctl.signal});clearTimeout(t);if(!r.ok)throw 0;return await r.json()}
+ catch(e){return jsonp(jsonpUrl||url)}
 }
-const artCache=store.get('art',{});
+async function searchItunes(term,limit){
+ // NOTE: never add media=music, it makes Apple redirect iPhones to the Music app and the search fails.
+ const u='https://itunes.apple.com/search?term='+encodeURIComponent(term)+'&entity=song&limit='+limit+'&country=US';
+ const d=await getJSON(u);
+ return (d.results||[]).filter(r=>r.trackName).map(r=>({id:'it'+r.trackId,t:r.trackName,a:r.artistName,art:(r.artworkUrl100||'').replace('100x100bb','300x300bb'),preview:r.previewUrl||'',genre:r.primaryGenreName||'',src:'apple'}));
+}
+async function searchDeezer(term,limit){
+ const u='https://api.deezer.com/search?q='+encodeURIComponent(term)+'&limit='+limit;
+ const d=await jsonp(u+'&output=jsonp');
+ return (d.data||[]).filter(r=>r.title).map(r=>({id:'dz'+r.id,t:r.title,a:(r.artist&&r.artist.name)||'',art:(r.album&&(r.album.cover_medium||r.album.cover))||'',preview:r.preview||'',genre:'',src:'deezer'}));
+}
+let searchDown=false;
+async function searchSongs(term,limit=10){
+ const [a,b]=await Promise.allSettled([searchItunes(term,limit),searchDeezer(term,limit)]);
+ const A=a.status==='fulfilled'?a.value:[],B=b.status==='fulfilled'?b.value:[];
+ searchDown=a.status==='rejected'&&b.status==='rejected';
+ if(searchDown)throw new Error('offline');
+ const out=[],seen={};
+ const key=x=>norm(x.t).replace(/ remaster.*| mono.*| live.*/,'')+'|'+norm(x.a).split(' ').slice(0,2).join(' ');
+ for(const x of [...A,...B]){const k=key(x);if(seen[k]){const o=seen[k];if(!o.preview&&x.preview)o.preview=x.preview;if(!o.art&&x.art)o.art=x.art;if(!o.genre&&x.genre)o.genre=x.genre;continue}seen[k]=x;out.push(x)}
+ return out;
+}
+const artCache=store.get('art2',{});
 async function hydrateArt(song){
  const k=norm(song.t+' '+song.a);
- if(artCache[k]){Object.assign(song,artCache[k]);return song}
- try{const r=await itunes(song.t+' '+song.a,3);const hit=r.find(x=>norm(x.t).includes(norm(song.t).split(' ')[0]))||r[0];
-  if(hit){artCache[k]={art:hit.art,preview:hit.preview};store.set('art',artCache);Object.assign(song,artCache[k])}}catch(e){}
+ if(artCache[k]&&artCache[k].preview&&(artCache[k].genre||song.genre)){Object.assign(song,artCache[k]);return song}
+ try{const r=await searchSongs(song.t+' '+song.a,5);const first=norm(song.t).split(' ')[0];
+  const hit=r.find(x=>x.preview&&norm(x.t).includes(first)&&norm(x.a).includes(norm(song.a).split(' ')[0]))||r.find(x=>x.preview&&norm(x.t).includes(first))||r[0];
+  const g=r.find(x=>x.genre&&norm(x.t).includes(first));if(hit){artCache[k]={art:song.art||hit.art,preview:song.preview||hit.preview,genre:song.genre||hit.genre||(g&&g.genre)||''};store.set('art2',artCache);Object.assign(song,artCache[k])}}catch(e){}
  return song;
 }
 function localFind(q){const n=norm(q);if(!n)return[];return SONGS.filter(s=>norm(s.t+' '+s.a).includes(n)||n.includes(norm(s.t)))}
-function known(song){const n=norm(song.t);return SONGS.find(s=>norm(s.t)===n||(n.length>4&&norm(s.t).startsWith(n)))}
+function known(song){const n=norm(song.t),ar=norm(song.a).split(' ')[0];const byArtist=!song.a||/unknown/i.test(song.a)?null:ar;return SONGS.find(s=>(norm(s.t)===n||(n.length>4&&norm(s.t).startsWith(n)))&&(!byArtist||norm(s.a).includes(byArtist)))}
 function guessVibe(song){
  const k=known(song);if(k)return{m:k.m.slice(0,3),tempo:k.tempo,known:true};
  for(const [re,m] of GENRE_MOODS)if(re.test(song.genre||''))return{m:m.slice(),tempo:/hip|rap|phonk|dance|electro|metal/i.test(song.genre)?'fast':'mid',known:false};
@@ -581,15 +666,14 @@ function guessVibe(song){
 /* ================= matching engine ================= */
 function localMatch(){
  const pref=(S.profile&&S.profile.niches)||[];
- let pool=SUBJECTS.filter(x=>S.lane==='surprise'||x.l===S.lane);
- if(S.lane==='sports'&&S.sport!=='Any')pool=pool.filter(x=>x.sp===S.sport);
+ let pool=SUBJECTS.filter(x=>inCat(x,S.lane));
  pool=pool.filter(x=>!S.shown.includes(x.n));
  if(pool.length<3){if(!S.shown.length)return pool.map(x=>card(x,x.m.filter(m=>S.moods.includes(m))));S.shown=[];return localMatch()}
  const seed=hash(S.song.t+S.shown.join());
  const scored=shuffle(pool,seed).map(x=>{
   const shared=x.m.filter(m=>S.moods.includes(m));
   let sc=shared.length*3+(shared.includes(S.moods[0])?2:0)+(x.m[0]===S.moods[0]?1:0);
-  if(pref.includes(x.sp)||pref.includes(x.l==='anime'?'Anime':x.l==='movies'?'Movies & TV':''))sc+=1;
+  if(pref.map(p=>LEGACY[p]||p).some(p=>p===x.sp||p===x.l))sc+=1;
   return{x,shared,sc};
  }).sort((a,b)=>b.sc-a.sc);
  return scored.slice(0,3).map(({x,shared})=>card(x,shared));
@@ -605,7 +689,7 @@ async function aiMatch(){
  const prof=S.profile||{};
  const prompt=`You are CutMatch, an assistant for short-form fan editors (sports, anime, movie edits on TikTok). Suggest 3 edit subjects for a song.
 Song: "${S.song.t}" by ${S.song.a}. Vibe: ${S.moods.join(', ')}. Tempo feel: ${S.tempo}.
-Lane: ${S.lane==='surprise'?'any (sports, anime, or movies/TV)':S.lane}${S.lane==='sports'&&S.sport!=='Any'?' — '+S.sport:''}.
+Category: ${S.lane==='surprise'?'anything (any sport, anime, movies or TV)':S.lane==='allsports'?'any sport (NBA, NFL, soccer, NHL, MLB, tennis, UFC/boxing, college, F1, WNBA, track, golf, etc.)':S.lane==='movies'?'movies or TV shows':S.lane==='anime'?'anime':S.lane==='Fighting'?'UFC / boxing':S.lane}.
 Editor edits on ${prof.app||'CapCut'}, level: ${prof.level||'beginner'}.
 Do not suggest any of: ${S.shown.join(', ')||'none'}.
 Use real, well-known players, characters or films and real moments. Content must be appropriate for teens.
@@ -694,21 +778,18 @@ function viewMatch(){
    <button class="icobtn" data-goto="learn">Start</button></div></div>`;
  }
  const s=S.song;
- const lanes=[['sports','Sports'],['anime','Anime'],['movies','Movies'],['surprise','Surprise']];
- const sports=['Any','NBA','NFL','Soccer','Fighting'];
  let out=`<div class="pad" style="padding-top:6px"><button class="back" id="clearSong">${I.back} New song</button>
  <div class="card"><div class="songcard">${artHTML(s,'lg')}
   <div style="flex:1"><h3 style="font-size:18px">${esc(s.t)}</h3><p class="muted small">${esc(s.a)}</p>
   <div style="margin-top:6px;display:flex;gap:6px;flex-wrap:wrap">${s.vibeKnown?'<span class="tag acc">Vibe known</span>':'<span class="tag blue">Vibe guessed · tap to fix</span>'}</div></div>
-  <button class="playbtn" data-play="${esc(s.id)}" ${s.preview?'':'disabled'} aria-label="Play preview">${I.play}</button></div>
+  <button class="playbtn" data-play="${esc(s.id)}" aria-label="Play preview">${I.play}</button></div>
   <div class="label">Vibe <span class="tiny">pick 1–3</span></div>
   <div class="chips">${MOODS.map(m=>`<button class="chip" data-mood="${m}" aria-pressed="${S.moods.includes(m)}">${MOOD_LABEL[m]}</button>`).join('')}</div>
   <div class="label">Tempo</div>
   <div class="seg" role="group">${['slow','mid','fast'].map(t=>`<button data-tempo="${t}" aria-pressed="${S.tempo===t}">${t[0].toUpperCase()+t.slice(1)}</button>`).join('')}</div>
  </div>
  <div class="label" style="margin-top:20px">What do you want to edit?</div>
- <div class="seg" role="group">${lanes.map(([k,v])=>`<button data-lane="${k}" aria-pressed="${S.lane===k}">${v}</button>`).join('')}</div>
- ${S.lane==='sports'?`<div class="chips" style="margin-top:10px">${sports.map(x=>`<button class="chip" data-sport="${x}" aria-pressed="${S.sport===x}">${x==='Fighting'?'UFC / Boxing':x}</button>`).join('')}</div>`:''}
+ <div class="chips">${CATS.map(([k,v])=>`<button class="chip" data-lane="${k}" aria-pressed="${S.lane===k}">${v}</button>`).join('')}</div>
  <div style="margin-top:18px"><button class="btn" id="go" ${S.moods.length?'':'disabled'}>${I.spark} ${S.results?'Find new matches':'Find my edit'}</button></div>
  ${meter}</div>`;
  if(S.results==='loading')out+=`<div class="sec" style="text-align:center;padding:30px"><span class="spin"></span><p class="muted small" style="margin-top:10px">Matching the vibe…</p></div>`;
@@ -729,11 +810,9 @@ function pickSong(song){
  const v=guessVibe(song);
  S.song={...song,vibeKnown:v.known};S.moods=v.m;S.tempo=v.tempo;S.results=null;S.shown=[];S.q='';
  const pref=(S.profile&&S.profile.niches)||[];
- if(pref.includes('Anime')&&!pref.some(p=>['NBA','NFL','Soccer','Fighting'].includes(p)))S.lane='anime';
- else if(pref.includes('Movies & TV')&&!pref.some(p=>['NBA','NFL','Soccer','Fighting','Anime'].includes(p)))S.lane='movies';
- const sp=pref.find(p=>['NBA','NFL','Soccer','Fighting'].includes(p));if(sp&&S.lane==='sports')S.sport=sp;
+ if(!S.laneTouched){const ps=pref.map(p=>LEGACY[p]||p).filter(p=>CATS.some(c=>c[0]===p));S.lane=ps.length===1?ps[0]:ps.length&&ps.every(p=>SPORTS.includes(p))?'allsports':ps.length?'surprise':'allsports'}
  S.tab='match';S.view=null;render();scrollTo(0,0);
- if(!song.art)hydrateArt(S.song).then(()=>{if(S.tab==='match'&&!S.view)render()});
+ if(!song.art||!song.preview||!song.genre)hydrateArt(S.song).then(()=>{if(S.tab==='match'&&!S.view&&S.song&&S.song.t===song.t){if(!S.song.vibeKnown&&S.song.genre&&!song.genre){const v2=guessVibe(S.song);S.moods=v2.m;S.tempo=v2.tempo}render()}});
 }
 let searchT,searchN=0;
 function bindMatch(){
@@ -741,9 +820,9 @@ function bindMatch(){
  if(q){
   q.oninput=()=>{S.q=q.value;clearTimeout(searchT);const v=q.value.trim();if(!v){$('#res').innerHTML='';return}
    const loc=localFind(v);showRes(loc,true);
-   searchT=setTimeout(async()=>{const my=++searchN;try{const r=await itunes(v);if(my!==searchN)return;
+   searchT=setTimeout(async()=>{const my=++searchN;try{const r=await searchSongs(v,10);if(my!==searchN)return;
      const seen=new Set();const merged=[...r.map(x=>{const k=known(x);return k?{...x,k:1}:x}),...loc.filter(l=>!r.some(x=>norm(x.t)===norm(l.t)))].filter(x=>{const key=norm(x.t+x.a);if(seen.has(key))return false;seen.add(key);return true});
-     showRes(merged.slice(0,8),false)}catch(e){if(my===searchN)showRes(loc,false,true)}},320)};
+     showRes(merged.slice(0,10),false)}catch(e){if(my===searchN)showRes(loc,false,true)}},320)};
   q.onkeydown=e=>{if(e.key==='Enter'){const f=$('[data-res]');if(f)f.click();else if(q.value.trim()){pickSong({id:'typed',t:q.value.trim(),a:'Unknown artist'})}}};
   if(S.q)q.oninput();
  }
@@ -751,10 +830,9 @@ function bindMatch(){
  const cs=$('#clearSong');if(cs)cs.onclick=()=>{S.song=null;S.results=null;player.pause();playing=null;render()};
  $$('[data-mood]').forEach(b=>b.onclick=()=>{const m=b.dataset.mood;if(S.moods.includes(m))S.moods=S.moods.filter(x=>x!==m);else{if(S.moods.length>=3)S.moods.shift();S.moods.push(m)}render()});
  $$('[data-tempo]').forEach(b=>b.onclick=()=>{S.tempo=b.dataset.tempo;render()});
- $$('[data-lane]').forEach(b=>b.onclick=()=>{S.lane=b.dataset.lane;S.shown=[];render()});
- $$('[data-sport]').forEach(b=>b.onclick=()=>{S.sport=b.dataset.sport;S.shown=[];render()});
- const go=$('#go');if(go)go.onclick=()=>runMatch();
- $$('[data-play]').forEach(b=>b.onclick=()=>togglePlay(S.song.preview,S.song.id,b));
+ $$('[data-lane]').forEach(b=>b.onclick=()=>{S.lane=b.dataset.lane;S.laneTouched=1;S.shown=[];render()});
+  const go=$('#go');if(go)go.onclick=()=>runMatch();
+ $$('[data-play]').forEach(b=>b.onclick=()=>togglePlay(S.song.preview,S.song.id,b,S.song));
  $$('[data-build]').forEach(b=>b.onclick=()=>openBlueprint(S.results[+b.dataset.build]));
  $$('[data-save]').forEach(b=>b.onclick=()=>toggleSave(S.results[+b.dataset.save]));
  $$('[data-notit]').forEach(b=>b.onclick=()=>notIt(+b.dataset.notit));
@@ -764,10 +842,10 @@ function showRes(list,loading,offline){
  if(!list.length&&loading){el.innerHTML=`<div class="results"><div class="empty"><span class="spin"></span></div></div>`;return}
  const typed=S.q.trim();
  el.innerHTML=`<div class="results">${list.map((s,i)=>`<button class="res" data-res="${i}">${artHTML(s)}<div style="flex:1;min-width:0"><div class="t">${esc(s.t)}</div><div class="a">${esc(s.a)}</div></div>${known(s)?'<span class="tag acc k">Edit fave</span>':''}</button>`).join('')}
- ${!list.length?`<div class="empty">${offline?'Offline, so only built-in songs are searchable.':'No songs found.'}</div>`:''}
- ${typed&&!list.length?`<button class="res" id="useTyped"><div class="art" style="display:grid;place-items:center;color:var(--acc)">${I.spark}</div><div style="flex:1"><div class="t">Use "${esc(typed)}"</div><div class="a">You'll set the vibe yourself</div></div></button>`:''}</div>`;
+ ${offline?`<div class="empty">Can't reach song search right now. Check your connection, or use the song as typed.</div>`:!list.length?`<div class="empty">No songs found. Try the artist name too.</div>`:''}
+ ${typed&&!loading?`<button class="res" id="useTyped"><div class="art" style="display:grid;place-items:center;color:var(--acc)">${I.spark}</div><div style="flex:1;min-width:0"><div class="t">Use "${esc(typed)}" as typed</div><div class="a">Not listed? Any song works. You'll set the vibe.</div></div></button>`:''}</div>`;
  $$('[data-res]').forEach(b=>b.onclick=()=>pickSong(list[+b.dataset.res]));
- const ut=$('#useTyped');if(ut)ut.onclick=()=>pickSong({id:'typed',t:typed,a:'Unknown artist'});
+ const ut=$('#useTyped');if(ut)ut.onclick=()=>{const m=typed.match(/^(.*?)\s+(?:by|-|–)\s+(.*)$/i);pickSong(m?{id:'typed',t:m[1],a:m[2]}:{id:'typed',t:typed,a:'Unknown artist'})};
 }
 async function runMatch(reroll){
  if(!reroll&&left()<=0){paywall('You\'ve used today\'s 3 free matches. Go Pro for unlimited.');return}
@@ -788,7 +866,7 @@ function notIt(i){
   sh.querySelectorAll('[data-r]').forEach(b=>b.onclick=()=>{
    const r=b.dataset.r;closeSheet();
    if(r==='Wrong vibe'){const lead=c.m[0];S.moods=S.moods.filter(m=>m!==lead);if(!S.moods.length)S.moods=[MOODS.find(m=>m!==lead)]}
-   if(r==='Not my niche'){S.lane=S.lane==='sports'?'anime':S.lane==='anime'?'movies':'sports'}
+   if(r==='Not my niche'){S.lane='surprise'}
    runMatch(true);
   });
  });
@@ -831,7 +909,7 @@ function viewBlueprint(){
  return `<div class="bp-head"><button class="back" id="bpBack">${I.back} Back</button>
  <div class="songcard" style="margin-top:4px">${artHTML(item.song)}<div style="flex:1"><p class="tiny muted" style="font-weight:700;letter-spacing:.06em;text-transform:uppercase">Edit blueprint</p>
  <h2 style="font-size:21px">${esc(item.card.n)}</h2><p class="muted small">to "${esc(item.song.t)}" · ${esc(item.song.a)}</p></div>
- <button class="playbtn sm" data-play="${esc(item.song.id)}" ${item.song.preview?'':'disabled'} aria-label="Play preview">${I.play}</button></div></div>
+ <button class="playbtn sm" data-play="${esc(item.song.id)}" aria-label="Play preview">${I.play}</button></div></div>
  <div class="tl"><div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px"><b class="small">~${bp.L}s edit · cut ${bp.cut}</b><span class="tiny muted">steps for ${esc(bp.app)}</span></div>
   <div class="tl-bar">${bp.sec.map(s=>`<div style="flex:${s.b-s.a};background:${s.color}">${s.name}<span class="beats">${Array.from({length:Math.max(2,Math.round(beats*(s.b-s.a)/2))},()=>'<i></i>').join('')}</span></div>`).join('')}</div>
   <div class="tl-ticks"><span>0:00</span><span>${bp.t(.15)}</span><span>${bp.t(.45)}</span><span>${bp.t(.85)}</span><span>${bp.t(1)}</span></div>
@@ -846,7 +924,7 @@ function bindBlueprint(){
  const item=S.saved.find(x=>x.id===S.view.id);if(!item)return;
  $('#bpBack').onclick=()=>{S.view=null;render()};
  $$('[data-chk]').forEach(b=>b.onclick=()=>{const k=b.dataset.chk;item.checks[k]=!item.checks[k];store.set('saved',S.saved);haptic();const y=scrollY;render();scrollTo(0,y)});
- $$('[data-play]').forEach(b=>b.onclick=()=>togglePlay(item.song.preview,item.song.id,b));
+ $$('[data-play]').forEach(b=>b.onclick=()=>togglePlay(item.song.preview,item.song.id,b,item.song));
  const m=$('#madeBtn');if(m)m.onclick=()=>madeThis(item);
 }
 function madeThis(item){
@@ -877,9 +955,9 @@ function bindTrending(){
  $$('[data-trf]').forEach(b=>b.onclick=()=>{S.trFilter=b.dataset.trf;render()});
  $$('[data-match]').forEach(b=>b.onclick=()=>{const s=SONGS.find(x=>x.t===b.dataset.match);pickSong({id:'loc'+norm(s.t),t:s.t,a:s.a,art:s.art,preview:s.preview})});
  $$('.tr').forEach(row=>{row.style.cursor='pointer';row.onclick=e=>{if(e.target.closest('[data-play]'))return;const t=row.querySelector('[data-song]').dataset.song;const s=SONGS.find(x=>x.t===t);pickSong({id:'loc'+norm(s.t),t:s.t,a:s.a,art:s.art,preview:s.preview})}});
- $$('[data-play][data-song]').forEach(b=>b.onclick=async e=>{e.stopPropagation();const s=SONGS.find(x=>x.t===b.dataset.song);if(!s.preview){b.innerHTML='<span class="spin" style="width:14px;height:14px;border-top-color:#fff"></span>';await hydrateArt(s)}togglePlay(s.preview,b.dataset.play,b);updPlay()});
+ $$('[data-play][data-song]').forEach(b=>b.onclick=e=>{e.stopPropagation();const s=SONGS.find(x=>x.t===b.dataset.song);togglePlay(s.preview,b.dataset.play,b,s)});
  // hydrate artwork lazily
- let changed=false;Promise.all(SONGS.filter(s=>!s.art).slice(0,12).map(s=>hydrateArt(s).then(()=>{if(s.art)changed=true}))).then(()=>{if(changed&&S.tab==='trending'&&!S.view){const y=scrollY;render();scrollTo(0,y)}});
+ let changed=false;Promise.all(SONGS.filter(s=>!s.preview).map(s=>hydrateArt(s).then(()=>{if(s.art)changed=true}))).then(()=>{if(changed&&S.tab==='trending'&&!S.view){const y=scrollY;render();scrollTo(0,y)}});
 }
 
 /* ---------- LEARN ---------- */
@@ -980,7 +1058,7 @@ function paywall(reason){
 function settings(){
  const p=S.profile;
  openSheet(`<h2>Settings</h2><div class="settings" style="margin-top:8px">
- <div class="row"><div><b>${esc(p.name||'Editor')}</b><p class="tiny muted">${esc(p.app)} · ${esc(p.level)} · ${esc((p.niches||[]).join(', ')||'Any niche')}</p></div><button class="icobtn" id="editProf">Edit</button></div>
+ <div class="row"><div><b>${esc(p.name||'Editor')}</b><p class="tiny muted">${esc(p.app)} · ${esc(p.level)} · ${esc((p.niches||[]).map(n=>catLabel(LEGACY[n]||n)).join(', ')||'Any niche')}</p></div><button class="icobtn" id="editProf">Edit</button></div>
  <div class="row"><div><b>Theme</b></div><div class="seg" style="width:190px">${['auto','dark','light'].map(t=>`<button data-th="${t}" aria-pressed="${S.theme===t}">${t[0].toUpperCase()+t.slice(1)}</button>`).join('')}</div></div>
  <div class="row"><div><b>CutMatch Pro</b><p class="tiny muted">${S.pro?'Active (prototype)':'Free plan'}</p></div><button class="sw" role="switch" aria-checked="${S.pro}" id="proSw" aria-label="Pro"></button></div>
  <div class="row" style="display:block"><div style="display:flex;justify-content:space-between;align-items:center"><b>AI matching</b><span class="ai-dot ${S.key?'on':''}">${S.key?'On':'Off'}</span></div>
@@ -1001,7 +1079,7 @@ let obStep=0,obDraft={name:'',app:'',level:'',niches:[],age:''};
 const OB=[
  {k:'app',q:'What do you edit on?',sub:'Blueprints give steps for your app.',opts:APPS.map(a=>[a,a,{CapCut:'Phone, most popular','After Effects':'Computer, pro level','Alight Motion':'Phone, motion graphics','Premiere Pro':'Computer',VN:'Phone',Other:'Anything else'}[a]])},
  {k:'level',q:'How long have you been editing?',sub:'We\'ll match tips to your level.',opts:[['Brand new','Brand new','Never made an edit'],['Beginner','Beginner','Made a few'],['Regular','Regular','I post edits often']]},
- {k:'niches',q:'What do you edit?',sub:'Pick all that fit.',multi:1,opts:[['NBA','NBA'],['NFL','NFL'],['Soccer','Soccer'],['Fighting','UFC / Boxing'],['Anime','Anime'],['Movies & TV','Movies & TV']]},
+ {k:'niches',q:'What do you edit?',sub:'Pick all that fit.',multi:1,opts:CATS.filter(c=>c[0]!=='allsports'&&c[0]!=='surprise').map(c=>[c[0],c[1]])},
  {k:'age',q:'How old are you?',sub:'CutMatch is for ages 13 and up.',opts:[['u13','Under 13'],['13-17','13–17'],['18-24','18–24'],['25+','25+']]},
  {k:'name',q:'What should we call you?',sub:'Optional.',text:1},
 ];
@@ -1025,7 +1103,7 @@ function onboarding(){
  <div class="steps">${OB.map((_,i)=>`<i class="${i<obStep?'on':''}"></i>`).join('')}</div>
  <h1>${esc(st.q)}</h1><p class="muted">${esc(st.sub)}</p>
  ${st.text?`<input class="inp plain" id="obName" placeholder="Your name or @handle" value="${esc(obDraft.name)}" style="margin-top:22px" autocomplete="nickname">`:
- `<div class="opts">${st.opts.map(([v,l,d])=>{const on=st.multi?val.includes(v):val===v;return `<button class="opt" data-v="${esc(v)}" aria-pressed="${on}"><span class="em">${esc(l.replace(/[^A-Za-z0-9]/g,'').slice(0,2))}</span><span>${esc(l)}${d?`<small>${esc(d)}</small>`:''}</span></button>`}).join('')}</div>`}
+ `<div class="opts ${st.multi?'two':''}">${st.opts.map(([v,l,d])=>{const on=st.multi?val.includes(v):val===v;return `<button class="opt" data-v="${esc(v)}" aria-pressed="${on}"><span class="em">${esc(l.replace(/[^A-Za-z0-9]/g,'').slice(0,2))}</span><span>${esc(l)}${d?`<small>${esc(d)}</small>`:''}</span></button>`}).join('')}</div>`}
  <div class="grow" style="min-height:24px"></div>
  <div style="display:flex;gap:10px">${obStep>1?'<button class="btn ghost" id="obPrev" style="flex:1">Back</button>':''}<button class="btn" id="obNext" style="flex:2" ${ok?'':'disabled'}>${obStep===OB.length?'Start editing':'Continue'}</button></div></div>`;
  $$('.opt').forEach(b=>b.onclick=()=>{haptic();const v=b.dataset.v;if(st.multi){obDraft[st.k]=val.includes(v)?val.filter(x=>x!==v):[...val,v]}else{obDraft[st.k]=v;if(st.k!=='age'){onboarding();setTimeout(()=>{obStep++;onboarding()},160);return}}onboarding()});
