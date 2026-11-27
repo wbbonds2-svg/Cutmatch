@@ -1,0 +1,23 @@
+{
+ "_note": "SAMPLE ONLY for testing the script without an API key. Not real trending data.",
+ "id": "resp_sample",
+ "output": [
+  {
+   "type": "x_search_call",
+   "status": "completed"
+  },
+  {
+   "type": "message",
+   "role": "assistant",
+   "content": [
+    {
+     "type": "output_text",
+     "text": "{\"sounds\": [{\"title\": \"Metamorphosis\", \"artist\": \"INTERWORLD\", \"tag\": \"hot\", \"why\": \"The phonk audio behind most villain-arc edits\", \"moods\": [\"dark\", \"aggressive\"], \"tempo\": \"fast\", \"lanes\": [\"sports\", \"anime\"], \"evidence\": [\"https://x.com/example/status/1\"]}, {\"title\": \"Daylight\", \"artist\": \"David Kushner\", \"tag\": \"rising\", \"why\": \"Slow build into a big chorus for comeback edits\", \"moods\": [\"dark\", \"triumphant\"], \"tempo\": \"mid\", \"lanes\": [\"sports\", \"movies\"], \"evidence\": [\"https://x.com/example/status/1\"]}, {\"title\": \"Another Love\", \"artist\": \"Tom Odell\", \"tag\": \"hot\", \"why\": \"Go-to for retirement and goodbye edits\", \"moods\": [\"sad\", \"nostalgic\"], \"tempo\": \"mid\", \"lanes\": [\"sports\"], \"evidence\": [\"https://x.com/example/status/1\"]}, {\"title\": \"Not Like Us\", \"artist\": \"Kendrick Lamar\", \"tag\": \"hot\", \"why\": \"Rivalry and trash-talk edits\", \"moods\": [\"aggressive\", \"hype\"], \"tempo\": \"mid\", \"lanes\": [\"sports\"], \"evidence\": [\"https://x.com/example/status/1\"]}, {\"title\": \"After Dark\", \"artist\": \"Mr.Kitty\", \"tag\": \"rising\", \"why\": \"Dreamy dark synth for anime edits\", \"moods\": [\"dark\", \"chill\"], \"tempo\": \"mid\", \"lanes\": [\"anime\", \"movies\"], \"evidence\": [\"https://x.com/example/status/1\"]}, {\"title\": \"Mercy Mercy Me (The Ecology)\", \"artist\": \"Marvin Gaye\", \"tag\": \"rising\", \"why\": \"Smooth throwback edits of old-school legends\", \"moods\": [\"smooth\", \"nostalgic\"], \"tempo\": \"slow\", \"lanes\": [\"sports\"], \"evidence\": [\"https://x.com/example/status/1\"]}, {\"title\": \"Lose Yourself\", \"artist\": \"Eminem\", \"tag\": \"hot\", \"why\": \"Clutch-moment edits around the one-shot lyric\", \"moods\": [\"triumphant\", \"hype\"], \"tempo\": \"fast\", \"lanes\": [\"sports\"], \"evidence\": [\"https://x.com/example/status/1\"]}, {\"title\": \"Starboy\", \"artist\": \"The Weeknd\", \"tag\": \"rising\", \"why\": \"Cinematic slow-mo plus velocity\", \"moods\": [\"smooth\", \"dark\"], \"tempo\": \"fast\", \"lanes\": [\"sports\", \"movies\"], \"evidence\": [\"https://x.com/example/status/1\"]}, {\"title\": \"Glimpse of Us\", \"artist\": \"Joji\", \"tag\": \"rising\", \"why\": \"What-could-have-been injury edits\", \"moods\": [\"sad\", \"chill\"], \"tempo\": \"slow\", \"lanes\": [\"sports\"], \"evidence\": [\"https://x.com/example/status/1\"]}, {\"title\": \"SICKO MODE\", \"artist\": \"Travis Scott\", \"tag\": \"hot\", \"why\": \"Beat switches for three-act career edits\", \"moods\": [\"hype\", \"aggressive\"], \"tempo\": \"fast\", \"lanes\": [\"sports\"], \"evidence\": [\"https://x.com/example/status/1\"]}, {\"title\": \"Totally Made Up Song Zzq\", \"artist\": \"Nobody Real\", \"tag\": \"hot\", \"why\": \"This one is fake and should be dropped\", \"moods\": [\"hype\"], \"tempo\": \"fast\", \"lanes\": [\"sports\"], \"evidence\": [\"https://x.com/example/status/1\"]}]}"
+    }
+   ]
+  }
+ ],
+ "citations": [
+  "https://x.com/example/status/1"
+ ]
+}

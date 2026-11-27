@@ -937,11 +937,11 @@ function madeThis(item){
 
 /* ---------- TRENDING ---------- */
 function viewTrending(){
- const list=SONGS.slice().sort((a,b)=>({hot:0,rising:1,classic:2}[a.tag]-{hot:0,rising:1,classic:2}[b.tag]));
+ const list=S.trend?S.trend.list:SONGS.slice().sort((a,b)=>({hot:0,rising:1,classic:2}[a.tag]-{hot:0,rising:1,classic:2}[b.tag]));
  const f=list[0];
  const filt=S.trFilter||'all';
  const shown=list.slice(1).filter(s=>filt==='all'||s.tag===filt||(filt!=='hot'&&filt!=='rising'&&filt!=='classic'&&s.m.includes(filt)));
- return `<div class="pad" style="padding-top:6px"><h1 style="font-size:26px">Trending sounds</h1><p class="muted small" style="margin:4px 0 14px">Picked by hand for editors and updated weekly. Tap a sound to match it.</p></div>
+ return `<div class="pad" style="padding-top:6px"><h1 style="font-size:26px">Trending sounds</h1><p class="muted small" style="margin:4px 0 14px">${S.trend?`What editors posted with on X this week · updated ${esc(new Date(S.trend.updated).toLocaleDateString(undefined,{month:'short',day:'numeric'}))}`:'Picked by hand for editors and updated weekly'}. Tap a sound to match it.</p></div>
  <section class="feat">${artHTML(f)}<p class="k">Sound of the week</p><h2>${esc(f.t)}</h2><p>${esc(f.a)} · ${esc(f.why)}</p>
   <div class="row"><button class="btn" data-match="${esc(f.t)}" style="flex:1.3">${I.spark} Match this</button><button class="btn ghost" data-play="loc${esc(norm(f.t))}" data-song="${esc(f.t)}" style="flex:1" aria-label="Preview">${I.play}</button></div></section>
  <div class="sec"><div class="chips scroll" style="padding:0 16px">${[['all','All'],['hot','Hot'],['rising','Rising'],['classic','Classics'],['dark','Dark'],['sad','Sad'],['hype','Hype'],['smooth','Smooth']].map(([k,v])=>`<button class="chip" data-trf="${k}" aria-pressed="${filt===k}">${v}</button>`).join('')}</div></div>
@@ -1117,7 +1117,25 @@ function onboarding(){
 }
 
 /* ================= boot ================= */
+/* weekly feed written by tools/trending/fetch-trending.mjs (Grok + X search); built-in list is the fallback */
+async function loadTrending(){
+ if(!/^https?:$/.test(location.protocol))return;
+ try{
+  const r=await fetch('trending.json',{cache:'no-store'});if(!r.ok)return;
+  const d=await r.json();
+  if(!d||!Array.isArray(d.sounds)||d.sounds.length<5||d.source==='fixture')return;
+  if(Date.now()-Date.parse(d.updated)>21*864e5)return; // older than 3 weeks = stale, use built-in picks
+  const list=d.sounds.filter(x=>x&&x.t&&x.a).map(x=>({t:String(x.t).slice(0,80),a:String(x.a).slice(0,60),tag:x.tag==='hot'?'hot':'rising',why:String(x.why||'').slice(0,120),
+   m:(x.m||[]).filter(m=>MOODS.includes(m)).slice(0,3),tempo:['slow','mid','fast'].includes(x.tempo)?x.tempo:'mid',art:/^https:/.test(x.art)?x.art:'',preview:/^https:/.test(x.preview)?x.preview:'',genre:x.genre||''}));
+  list.forEach(x=>{if(!x.m.length)x.m=['hype']});
+  const keys=new Set(list.map(x=>norm(x.t)));
+  SONGS.splice(0,SONGS.length,...list,...SONGS.filter(x=>!keys.has(norm(x.t))));
+  S.trend={updated:d.updated,list};
+  if(!S.view&&(S.tab==='trending'||(S.tab==='match'&&!S.song))&&S.profile){const y=scrollY;render();scrollTo(0,y)}
+ }catch(e){}
+}
 render();
+loadTrending();
 if('serviceWorker' in navigator&&location.protocol==='https:'){navigator.serviceWorker.register('sw.js').catch(()=>{})}
 })();
 </script>

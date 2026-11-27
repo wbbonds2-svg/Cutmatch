@@ -1,0 +1,36 @@
+name: Weekly trending sounds
+
+# Every Monday, Grok searches X for the songs editors posted with this week,
+# each song is checked against Apple Music / Deezer, and trending.json is updated.
+# The app's Trending page loads trending.json automatically.
+on:
+  schedule:
+    - cron: '17 14 * * 1'   # Mondays 14:17 UTC (morning in the US)
+  workflow_dispatch: {}      # "Run workflow" button for a manual refresh
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Ask Grok for this week's sounds
+        env:
+          XAI_API_KEY: ${{ secrets.XAI_API_KEY }}
+        run: node tools/trending/fetch-trending.mjs
+      - name: Save trending.json
+        run: |
+          if git diff --quiet --exit-code -- trending.json 2>/dev/null && git ls-files --error-unmatch trending.json >/dev/null 2>&1; then
+            echo "No changes."; exit 0
+          fi
+          git config user.name "cutmatch-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add trending.json
+          git commit -m "Update trending sounds ($(date -u +%Y-%m-%d))"
+          git push
